@@ -1,0 +1,91 @@
+# 1* 
+# Peça para o usuário digitar um número, verifique se um número é positivo, 
+# negativo ou zero.
+
+# numero = int(input('nº: '))
+
+
+if numero > 0 :
+   print('positivo')
+elif numero < 0:
+   print('negativo')   
+else:
+   print('zero')
+
+
+# 2*
+
+# Peça para o usuário digitar a idade, verifique se uma pessoa pode votar com 
+# base na idade.
+
+idade = int(input('idade: '))
+if idade >= 18 :
+    print('Pode votar')
+else:
+    print('NÃO Pode votar')
+
+
+# 3*
+
+# Declara uma variável com um número qualquer, 
+# determine se um número é par ou ímpar.
+
+numero = int(input('numero: '))
+if numero % 2 == 0:
+    print('o numero é par')
+else:
+    print('o numero é impar')
+
+
+
+# 4*
+
+# Usuário vai digitar 3  números, para criar um triângulo, verifique se um triângulo 
+# é equilátero, isósceles ou escaleno
+# Um triângulo é chamado de equilátero se todos os lados possuem a mesma medida. 
+# Um triângulo é chamado de isósceles se dois lados possuem a mesma medida. 
+# Um triângulo é chamado de escaleno se todos os lados possuem medidas diferentes.
+
+# n1 = int(input('numero 1: '))
+# n2 = int(input('numero 2: '))
+# n3 = int(input('numero 3: '))
+
+if n1 == n2 == n3:
+    print('triangulo equilátero')
+elif (n1 == n2 and n2 != n3) or \
+     (n1 == n3 and n1 != n2) or \
+     (n2 == n3 and n1 != n2):
+    print('triangulo isósceles')
+else:
+    print('triangulo escaleno')
+
+
+# 5*
+
+# Determine se um número é múltiplo de 5 e 7.
+
+numero = int(input('nº: '))
+if numero % 5 == 0 or numero % 7 == 0:
+    print('múltiplo de 5 e 7')
+else:
+    print('não múltiplo')
+
+# 6*
+
+# Verifique se um número é positivo e maior que 10
+
+numero = int(input('nº: '))
+
+if numero > 10 :
+   print('maior que 10 - positivo')
+
+
+# 7*
+
+# Verifique se um número é divisível por 3 ou 5.
+
+numero = int(input('nº: '))
+if numero % 3 == 0 or numero % 5 == 0:
+    print('divisível por 3 ou 5')
+else:
+    print('sem divisão')
