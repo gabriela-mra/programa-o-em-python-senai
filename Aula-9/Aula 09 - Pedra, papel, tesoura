@@ -1,0 +1,59 @@
+
+
+import random
+
+meus_pontos = 0
+pontas_maquina = 0
+add  =  [3,2,1]
+
+for chance in add:
+    opcao_pc  =  ['✂️','🧻', '🪨']
+    escolha_pc = random.choice(opcao_pc)
+    # print(escolha_pc)
+    minha_escolha = input('Escolha>>')
+    if escolha_pc == minha_escolha:
+        print('Empate')
+        pontas_maquina = pontas_maquina + 1
+        meus_pontos = meus_pontos + 1
+        add.append(1)
+        print('Você ainda tem ', len(add), 'chances')
+        
+        
+    elif escolha_pc == '✂️' and minha_escolha == '🧻':
+        print('Maquina ganhou')
+        pontas_maquina = pontas_maquina + 1
+        print('Chances', add)
+        add.pop()
+    elif escolha_pc == '🧻' and minha_escolha == '🪨':
+        print('Maquina ganhou')
+        pontas_maquina = pontas_maquina + 1
+        add.pop()
+        print('Chances',add)  
+    elif escolha_pc == '🪨' and minha_escolha == '✂️':
+        print('Maquina ganhou')  
+        pontas_maquina = pontas_maquina  + 1
+        print('Chances',add)  
+        add =  add.pop()      
+    else:
+        print('Você ganhou!!!!')
+        meus_pontos =  meus_pontos + 1
+        # add.pop()
+else:
+   
+    if meus_pontos > pontas_maquina:
+        print('Vc é o vencedor do jogo 🏆')
+    elif  meus_pontos == pontas_maquina:
+        print('EMPATE GERAL')    
+    else:
+        print('A MÁQUINA É O VENCEDOR!! 🏆')    
+
+    print('Chances esgotadas')       
+    print(f'''
+             PLACAR
+----------------------------------             
+seus pontos{meus_pontos}
+pontos da maquina {pontas_maquina} 
+----------------------------------
+
+''')     
+
