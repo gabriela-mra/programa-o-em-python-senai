@@ -1,0 +1,82 @@
+## Exercícios com funções: variáveis locais, globais e parâmetros
+
+# 1 - CRIE UMA FUNÇÃO PARA COMPARAR 2 NÚMEROS (par ou impar). UTILIZE VARIÁVEIS LOCAIS.***
+
+# def comparar (n1, n2):
+#     if n1 % 2 == 0:
+#         print (n1, 'Esse número é par')
+#     else:
+#         print(n1, 'Esse número é impar')
+
+#     if n2 % 2 == 0:
+#         print (n2, 'Esse número é par')
+#     else:
+#         print(n2, 'Esse número é impar')
+
+# numero1 = int(input('Digite numero 1>> '))
+# numero2 = int(input('Digite numero 2>> '))
+
+# comparar(numero1, numero2)
+
+#2 - CRIE UMA FUNÇÃO PARA MULTIPLICAR 3 NUMEROS.
+
+# def multiplicar(n1, n2, n3):
+#     resultado = n1 * n2 * n3
+#     print(resultado, 'Resultado')
+
+# a = int(input('Digite o primeiro número>> '))
+# b = int(input('Digite o segundo número>> '))
+# c = int(input('Digite o terceiro número>> '))
+
+# multiplicar(a, b, c)
+
+# 3 - CRIE UMA FUNÇÃO PARA DESCOBRIR O VALOR ELEVADO DE UM NÚMERO.***
+
+# def elevado (n1, n2):
+#     elevação = n1 ** n2
+#     print(elevação)
+
+# numero1 = int(input('primeiro numero>> '))
+# numero2 = int(input('numero elevado>> '))
+
+# elevado(numero1, numero2)
+
+# 4 - CRIE UMA FUNÇÃO PARA MOSTRAR UMA MENSAGEM PERSONALIZADA NA TELA, SE O USUÁRIO  DIGITAR, 18 ANOS.***
+# def verificar_idade(idade):
+#     if idade == 18:
+#         print('Idade identificada')
+#     else:
+#         print('Idade incorreta')
+
+# numero1 = int(input('Digite uma idade>> '))
+
+# verificar_idade(numero1)
+
+
+# 5 - DESENVOLVA UMA FUNÇÃO PARA DESCOBRIR A IDADE DE UMA PESSOA.***
+
+def descobrir_idade(idade):
+        if idade == 35:
+            print('Correto')
+        else:
+            print('Incorreto')
+
+numero1 = int(input('Digite uma idade>> '))
+
+# REFAZENDO
+
+descobrir_idade(numero1)
+
+def nascimento (nascimento, atualmente):
+     idade = nascimento - atualmente
+     print('Você nasceu em?', idade)
+
+
+#6 - DESENVOLVA UMA FUNÇÃO PARA VER SE O BRASIL GANHOU A COPA DE 1999.***
+
+
+
+
+# 7 - DESENVOLVA UM SISTEMA DE RESTAURANTE, ONDE O CLIENTE TEM OPÇÃO DE ESCOLHER ENTRE SALADA, MACARRONADA, SANDUICHE, SORVETE.***  
+
+# ***1 - Função -  cumprimentar o cliente*** ***2 - Função - restaurante*** ***3 - Sugestão utilize listas  e loops***
