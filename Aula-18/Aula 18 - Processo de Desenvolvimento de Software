@@ -1,0 +1,125 @@
+# ATIVIDADE 2 - INCOMPLETO
+
+# atividade a partir desse código
+
+import tkinter as tk
+
+
+janela  =  tk.Tk()
+janela.geometry('1700x750')
+janela.title('FORMULÁRIO')
+
+def display():
+    texto = nome_input.get()
+    mostrar_nome.config(text = texto)
+
+# TITULO DO FORM
+
+titulo  =  tk.Label(janela, text='FORMULARIO DE CADASTRO')
+titulo.pack()
+
+
+# TÍTULO  DO NOME |  INPUT DO NOME
+
+
+nome_texto = tk.Label(janela, text  =  'Nome') 
+nome_texto.pack()
+
+
+nome_input =  tk.Entry(janela)
+nome_input.pack()
+
+btn  =  tk.Button(janela, text = 'clique aqui', command=display)
+btn.pack()
+
+mostrar_nome = tk.Label(janela, text  =  'Resultado = ')
+mostrar_nome.pack()
+
+
+# idade ---------------------------------------------
+
+def display():
+    texto1 = idade_input.get()
+    mostrar_nome1.config(text = texto1)
+
+idade_texto = tk.Label(janela, text  =  'Idade')
+idade_texto.pack()
+
+
+idade_input =  tk.Entry(janela)
+idade_input.pack()
+
+btn  =  tk.Button(janela, text = 'clique aqui', command=display)
+btn.pack()
+
+mostrar_nome1 = tk.Label(janela, text  =  'Resultado = ')
+mostrar_nome1.pack()
+
+# email ---------------------------------------------
+
+def display():
+    texto2 = email_input.get()
+    mostrar_nome2.config(text = texto2)
+
+email_texto = tk.Label(janela, text  =  'E-mail')
+email_texto.pack()
+
+
+email_input =  tk.Entry(janela)
+email_input.pack()
+
+btn  =  tk.Button(janela, text = 'clique aqui', command=display)
+btn.pack()
+
+mostrar_nome2 = tk.Label(janela, text  =  'Resultado = ')
+mostrar_nome2.pack()
+
+# email ---------------------------------------------
+def display():
+    texto3 = email_input.get()
+    mostrar_nome3.config(text = texto3)
+
+endereço_texto = tk.Label(janela, text  =  'Endereço')
+endereço_texto.pack()
+
+
+endereço_input =  tk.Entry(janela)
+endereço_input.pack()
+
+btn  =  tk.Button(janela, text = 'clique aqui', command=display)
+btn.pack()
+
+mostrar_nome3 = tk.Label(janela, text  =  'Resultado = ')
+mostrar_nome3.pack()
+
+# celular_texto = tk.Label(janela, text  =  'Celular')
+# celular_texto.pack()
+
+
+# celular_input =  tk.Entry(janela)
+# celular_input.pack()
+
+# cep_texto = tk.Label(janela, text  =  'CEP')
+# cep_texto.pack()
+
+
+# cep_input =  tk.Entry(janela)
+# cep_input.pack()
+
+# cidade_texto = tk.Label(janela, text  =  'Cidade')
+# cidade_texto.pack()
+
+
+# cidade_input =  tk.Entry(janela)
+# cidade_input.pack()
+
+# cursos_texto = tk.Label(janela, text  =  'Cursos')
+# cursos_texto.pack()
+
+
+# cursos_input =  tk.Entry(janela)
+# cursos_input.pack()
+
+# -------------------
+
+janela.mainloop()
