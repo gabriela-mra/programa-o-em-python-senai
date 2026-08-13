@@ -1,0 +1,17 @@
+import sqlite3
+
+criando = sqlite3.connect('atividade1.db')
+
+cursor = criando.cursor()
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS dados(
+    nome TEXT,
+    idade INTEGER,
+    email INTEGER,
+    endereço TEXT,
+    trabalho TEXT,
+    graduação TEXT
+               
+)''')
+
+criando.commit()
