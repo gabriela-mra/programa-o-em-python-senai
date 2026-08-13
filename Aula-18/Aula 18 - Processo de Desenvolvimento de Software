@@ -1,4 +1,4 @@
-# ATIVIDADE 2 - INCOMPLETO
+d# ATIVIDADE 2 - INCOMPLETO
 
 # atividade a partir desse código
 
@@ -74,9 +74,9 @@ btn.pack()
 mostrar_nome2 = tk.Label(janela, text  =  'Resultado = ')
 mostrar_nome2.pack()
 
-# email ---------------------------------------------
+# endereço ---------------------------------------------
 def display():
-    texto3 = email_input.get()
+    texto3 = endereço_input.get()
     mostrar_nome3.config(text = texto3)
 
 endereço_texto = tk.Label(janela, text  =  'Endereço')
