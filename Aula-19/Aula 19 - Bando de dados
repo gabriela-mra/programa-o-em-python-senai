@@ -110,3 +110,351 @@ btn.grid(row=24, column=1)
 
 
 app.mainloop()
+
+
+testar 
+
+import customtkinter as ctk
+import sqlite3
+import tkinter as tk
+from tkinter import messagebox
+from tkinter import ttk
+
+ctk.set_appearance_mode('Dark')
+ctk.set_default_color_theme('blue')
+
+
+# BANCO DE DADOS
+criando = sqlite3.connect('atividade3.db')
+cursor = criando.cursor()
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS dados(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT,
+    idade INTEGER,
+    email TEXT,
+    endereço TEXT,
+    trabalho TEXT,
+    graduação TEXT
+)
+''')
+
+criando.commit()
+
+
+# CREATE - INSERIR
+def criar_dados():
+
+    nome = nome_input.get()
+    idade = idade_input.get()
+    email = email_input.get()
+    endereço = endereço_input.get()
+    trabalho = trabalho_input.get()
+    graduação = graduação_input.get()
+
+    if nome and idade and email:
+
+        cursor.execute('''
+        INSERT INTO dados(nome, idade, email, endereço, trabalho, graduação)
+        VALUES (?, ?, ?, ?, ?, ?)
+        ''', (nome, idade, email, endereço, trabalho, graduação))
+
+        criando.commit()
+
+        messagebox.showinfo('', 'DADOS INSERIDOS COM SUCESSO')
+
+        limpar_campos()
+        listar_heads()
+
+    else:
+        messagebox.showwarning('', 'PREENCHA NOME, IDADE E E-MAIL')
+
+
+# READ - LISTAR
+def listar_heads():
+
+    for row in tabela.get_children():
+        tabela.delete(row)
+
+    cursor.execute('SELECT * FROM dados')
+
+    heads = cursor.fetchall()
+
+    for head in heads:
+        tabela.insert('', 'end', values=head)
+
+
+# DELETE - DELETAR
+def deletar_dados():
+
+    selecao = tabela.selection()
+
+    if selecao:
+
+        dados_selecionados = tabela.item(selecao)
+
+        id_dado = dados_selecionados['values'][0]
+
+        cursor.execute(
+            'DELETE FROM dados WHERE id = ?',
+            (id_dado,)
+        )
+
+        criando.commit()
+
+        messagebox.showinfo('', 'DADO DELETADO')
+
+        listar_heads()
+        limpar_campos()
+
+    else:
+        messagebox.showwarning('', 'SELECIONE UM DADO')
+
+
+# UPDATE - ATUALIZAR
+def atualizar_dados():
+
+    selecao = tabela.selection()
+
+    if selecao:
+
+        dados_selecionados = tabela.item(selecao)
+
+        id_dado = dados_selecionados['values'][0]
+
+        nome = nome_input.get()
+        idade = idade_input.get()
+        email = email_input.get()
+        endereço = endereço_input.get()
+        trabalho = trabalho_input.get()
+        graduação = graduação_input.get()
+
+        if nome and idade and email:
+
+            cursor.execute('''
+            UPDATE dados
+            SET nome = ?,
+                idade = ?,
+                email = ?,
+                endereço = ?,
+                trabalho = ?,
+                graduação = ?
+            WHERE id = ?
+            ''', (
+                nome,
+                idade,
+                email,
+                endereço,
+                trabalho,
+                graduação,
+                id_dado
+            ))
+
+            criando.commit()
+
+            messagebox.showinfo('', 'DADOS ATUALIZADOS')
+
+            limpar_campos()
+            listar_heads()
+
+        else:
+            messagebox.showwarning('', 'PREENCHA NOME, IDADE E E-MAIL')
+
+    else:
+        messagebox.showwarning('', 'SELECIONE UM DADO')
+
+
+# COLOCAR DADOS DA TABELA NOS CAMPOS
+def selecionar_dado(event):
+
+    selecao = tabela.selection()
+
+    if selecao:
+
+        dados = tabela.item(selecao)['values']
+
+        nome_input.delete(0, tk.END)
+        nome_input.insert(0, dados[1])
+
+        idade_input.delete(0, tk.END)
+        idade_input.insert(0, dados[2])
+
+        email_input.delete(0, tk.END)
+        email_input.insert(0, dados[3])
+
+        endereço_input.delete(0, tk.END)
+        endereço_input.insert(0, dados[4])
+
+        trabalho_input.delete(0, tk.END)
+        trabalho_input.insert(0, dados[5])
+
+        graduação_input.delete(0, tk.END)
+        graduação_input.insert(0, dados[6])
+
+
+# LIMPAR CAMPOS
+def limpar_campos():
+
+    nome_input.delete(0, tk.END)
+    idade_input.delete(0, tk.END)
+    email_input.delete(0, tk.END)
+    endereço_input.delete(0, tk.END)
+    trabalho_input.delete(0, tk.END)
+    graduação_input.delete(0, tk.END)
+
+
+# JANELA
+app = ctk.CTk()
+
+app.title('AGENCIA DE MARKETING')
+app.geometry('1100x700')
+
+
+ctk.CTkLabel(
+    app,
+    text='CADASTRO LEADS DA AGENCIA:'
+).grid(row=0, column=0, columnspan=2, pady=15)
+
+
+# NOME
+ctk.CTkLabel(app, text='Nome:').grid(
+    row=1, column=0, padx=10, pady=5
+)
+
+nome_input = ctk.CTkEntry(app, width=250)
+nome_input.grid(
+    row=1, column=1, padx=10, pady=5
+)
+
+
+# IDADE
+ctk.CTkLabel(app, text='Idade:').grid(
+    row=2, column=0, padx=10, pady=5
+)
+
+idade_input = ctk.CTkEntry(app, width=250)
+idade_input.grid(
+    row=2, column=1, padx=10, pady=5
+)
+
+
+# E-MAIL
+ctk.CTkLabel(app, text='E-mail:').grid(
+    row=3, column=0, padx=10, pady=5
+)
+
+email_input = ctk.CTkEntry(app, width=250)
+email_input.grid(
+    row=3, column=1, padx=10, pady=5
+)
+
+
+# ENDEREÇO
+ctk.CTkLabel(app, text='Endereço:').grid(
+    row=4, column=0, padx=10, pady=5
+)
+
+endereço_input = ctk.CTkEntry(app, width=250)
+endereço_input.grid(
+    row=4, column=1, padx=10, pady=5
+)
+
+
+# TRABALHO
+ctk.CTkLabel(app, text='Trabalho:').grid(
+    row=5, column=0, padx=10, pady=5
+)
+
+trabalho_input = ctk.CTkEntry(app, width=250)
+trabalho_input.grid(
+    row=5, column=1, padx=10, pady=5
+)
+
+
+# GRADUAÇÃO
+ctk.CTkLabel(app, text='Graduação:').grid(
+    row=6, column=0, padx=10, pady=5
+)
+
+graduação_input = ctk.CTkEntry(app, width=250)
+graduação_input.grid(
+    row=6, column=1, padx=10, pady=5
+)
+
+
+# BOTÕES
+btn = ctk.CTkButton(
+    app,
+    text='Inserir',
+    command=criar_dados
+)
+btn.grid(row=7, column=0, pady=15)
+
+
+btn_atualizar = ctk.CTkButton(
+    app,
+    text='Atualizar',
+    command=atualizar_dados
+)
+btn_atualizar.grid(row=7, column=1, pady=15)
+
+
+btn_deletar = ctk.CTkButton(
+    app,
+    text='Deletar',
+    command=deletar_dados
+)
+btn_deletar.grid(row=8, column=0, pady=5)
+
+
+btn_limpar = ctk.CTkButton(
+    app,
+    text='Limpar',
+    command=limpar_campos
+)
+btn_limpar.grid(row=8, column=1, pady=5)
+
+
+# TABELA
+columns = (
+    'ID',
+    'NOME',
+    'IDADE',
+    'E-MAIL',
+    'ENDEREÇO',
+    'TRABALHO',
+    'GRADUAÇÃO'
+)
+
+tabela = ttk.Treeview(
+    app,
+    columns=columns,
+    show='headings'
+)
+
+tabela.grid(
+    row=9,
+    column=0,
+    columnspan=2,
+    padx=10,
+    pady=20
+)
+
+
+for col in columns:
+    tabela.heading(col, text=col)
+
+
+# QUANDO CLICAR EM UM LEAD
+tabela.bind(
+    '<ButtonRelease-1>',
+    selecionar_dado
+)
+
+
+# MOSTRAR OS DADOS AO ABRIR
+listar_heads()
+
+
+app.mainloop()
